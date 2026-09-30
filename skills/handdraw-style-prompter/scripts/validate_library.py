@@ -522,6 +522,8 @@ def main() -> None:
         ROOT / "skills" / "poster-prompt-generator" / "SKILL.md",
         ROOT / "skills" / "article-cover-designer" / "SKILL.md",
         ROOT / "skills" / "style-fusion-prompter" / "SKILL.md",
+        ROOT / "skills" / "custom-asset-manager" / "SKILL.md",
+        ROOT / "skills" / "ip-designer" / "SKILL.md",
     ]:
         if sf.exists():
             content = sf.read_text(encoding="utf-8")

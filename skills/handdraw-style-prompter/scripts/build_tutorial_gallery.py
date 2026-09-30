@@ -893,6 +893,7 @@ const I18N = {{
     filterSocialCard: "社媒卡 (SC)",
     filterInfographic: "信息图 (IG)",
     filterComicStoryboard: "漫画分镜 (SB)",
+    filterIpCharacter: "IP形象 (IP)",
     filterBlue: "经典蓝系",
     filterGreen: "清新绿系",
     filterRed: "古典红绿",
@@ -1025,6 +1026,7 @@ const I18N = {{
     filterSocialCard: "Social Cards (SC)",
     filterInfographic: "Infographics (IG)",
     filterComicStoryboard: "Comic Storyboards (SB)",
+    filterIpCharacter: "IP Characters (IP)",
     filterBlue: "Classic Blue",
     filterGreen: "Fresh Green",
     filterRed: "Classic Red & Vintage",
@@ -1411,11 +1413,13 @@ function renderLayoutFilters() {{
   const scCount = LAYOUTS_DATA.filter(x => x.cat === 'social-card').length;
   const igCount = LAYOUTS_DATA.filter(x => x.cat === 'infographic').length;
   const sbCount = LAYOUTS_DATA.filter(x => x.cat === 'comic-storyboard').length;
+  const ipCount = LAYOUTS_DATA.filter(x => x.cat === 'ip-character').length;
   pickerFilters.innerHTML = `
     <button type="button" class="modal-filter-btn is-active" data-filter="all">${{t.filterAll}} (${{LAYOUTS_DATA.length}})</button>
     <button type="button" class="modal-filter-btn" data-filter="social-card">${{t.filterSocialCard}} (${{scCount}})</button>
     <button type="button" class="modal-filter-btn" data-filter="infographic">${{t.filterInfographic}} (${{igCount}})</button>
     <button type="button" class="modal-filter-btn" data-filter="comic-storyboard">${{t.filterComicStoryboard}} (${{sbCount}})</button>
+    <button type="button" class="modal-filter-btn" data-filter="ip-character">${{t.filterIpCharacter}} (${{ipCount}})</button>
   `;
   attachFilterEvents();
 }}

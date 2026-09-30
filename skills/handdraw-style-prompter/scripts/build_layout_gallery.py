@@ -14,6 +14,7 @@ CATEGORIES = (
     ("social-card", "社媒卡", "Social Cards"),
     ("infographic", "信息图", "Infographics"),
     ("comic-storyboard", "漫画分镜", "Comic Storyboards"),
+    ("ip-character", "IP形象", "IP Characters"),
 )
 
 

@@ -25,7 +25,7 @@ description: 管理自建图库（角色库、道具库、场景库）全生命�
 ### 1. 初始化或挂载图库目录 (Init / Attach)
 * **用户触发词**：
   * `请帮我初始化图库目录：d:\path\to\tuku`
-  * `切换图库目录：d:\my_assets`
+  * `切换图库目录：d:\path\to\my_assets`
 * **执行逻辑**：
   调用 `init_or_attach_library(target_path)`：
   1. 在指定目录下创建 `characters/`、`props/`、`scenes/` 及自包含的 `library.json`；

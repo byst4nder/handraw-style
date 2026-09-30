@@ -6,9 +6,14 @@
 
 > **Struggling to describe art styles? Trouble structuring visual layouts? Simply pick an index number to generate highly recognizable AI image prompts.**
 
-This repository curates **280 distinct hand-drawn illustration styles** (`001`–`280`), **125 composition layout patterns** (`SC-*` Social Cards, `IG-*` Infographics, `SB-*` Comic Storyboards), and **36 curated classic monochrome colors** (`C-01`–`C-36`).
+This repository curates **280 distinct hand-drawn illustration styles** (`001`–`280`), **126 composition layout patterns** (`SC-*` Social Cards, `IG-*` Infographics, `SB-*` Comic Storyboards, `IP-*` IP Characters), and **36 curated classic monochrome colors** (`C-01`–`C-36`).
 
 Whether you are crafting social media post covers, educational infographics, architectural comparisons, or multi-panel narrative comics, you no longer need to memorize obscure art history terminology or struggle with complex compositions. **Simply choose a style number, layout ID, and theme color, supply your topic, and instantly get verified, high-fidelity bilingual prompts ready to paste into Midjourney, DALL-E 3, Flux, Stable Diffusion, or any other image generator.**
+
+> [!NOTE]
+> ### 📢 Open Source & Attribution Notice
+> **You are welcome to freely use, modify, and commercialize this project.**<br>
+> The only small request: if this project helps you, or if your project is based on secondary development of this work, **please retain author yang0 and the original repository link** ([https://github.com/yang0/handraw-style](https://github.com/yang0/handraw-style)). Thank you for your support and respect for open source!
 
 > [!TIP]
 > ### 📚 Official Feishu Knowledge Base is Live
@@ -220,3 +225,13 @@ No matter what illustration style or layout composition you choose, specifying a
 
 - **X (Twitter)**: [@yang02010](https://x.com/yang02010)
 - **GitHub**: [yang0/handraw-style](https://github.com/yang0/handraw-style)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License with an explicit attribution requirement. **You are welcome to freely use, modify, and commercialize.**
+
+The only request: if this project is helpful to you, or if your project is based on secondary development of this work, please retain credit to author **yang0** and the original repository link: [https://github.com/yang0/handraw-style](https://github.com/yang0/handraw-style).
+
+See [LICENSE](LICENSE) for full terms.
