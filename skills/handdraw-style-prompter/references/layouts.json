@@ -2138,5 +2138,23 @@
       "IP设计手册"
     ],
     "name_en": "IP Character Xiaohongshu Profile Interface Card"
+  },
+  {
+    "id": "IP-013",
+    "category": "ip-character",
+    "name": "IP招牌体态与动态力线卡",
+    "image": "../../../images/layouts/ip-characters/IP-013.webp",
+    "prompt_file": "layouts/IP-013.md",
+    "keywords": [
+      "招牌体态",
+      "动态力线",
+      "体态展示",
+      "动作力线",
+      "角色动作",
+      "视觉延展",
+      "IP设计手册",
+      "Character Bible"
+    ],
+    "name_en": "IP Signature Poses & Action Lines Card"
   }
 ]
