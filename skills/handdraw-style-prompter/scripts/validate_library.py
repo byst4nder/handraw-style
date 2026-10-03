@@ -131,7 +131,7 @@ def main() -> None:
         fail("style FF-001 (217) must preserve traits and use its four-panel grid reference")
     if not grid_path("FF-001").exists():
         fail("style FF-001 four-panel grid is missing")
-    for s_id in ["FG-007", "FG-008", "FG-009", "FG-010", "FB-033", "FE-052", "FE-053"]:
+    for s_id in ["FG-007", "FG-008", "FG-009", "FG-010", "FB-033", "FE-060", "FE-061", "FE-062"]:
         reference = resolve("unregistered-model", s_id)
         if grid_path(s_id).exists() or reference["reference_path"] != str(single_path(s_id)):
             fail(f"single-image style {s_id} must not retain a redundant grid reference")
@@ -283,7 +283,7 @@ def main() -> None:
         fail("default prompt must identify pure-image mode and offer the graphic-text switch")
     graphic_theme = "世界就是个草台班子"
     graphic_text = subprocess.run(
-        python + [str(SKILL / "scripts" / "prompt_style.py"), "--style", "FE-052", "--theme", graphic_theme, "--mode", "graphic-text"],
+        python + [str(SKILL / "scripts" / "prompt_style.py"), "--style", "FE-060", "--theme", graphic_theme, "--mode", "graphic-text"],
         capture_output=True,
         text=True,
         encoding="utf-8",
@@ -310,11 +310,11 @@ def main() -> None:
         fail("graphic-text prompt must not expose reference paths or isolation guidance")
     if "核心风格特征：奇想风格化3D卡通美学" not in graphic_reference.stdout:
         fail("graphic-text prompt must retain required positive style traits")
-    style_267 = subprocess.run(python + [str(SKILL / "scripts" / "prompt_style.py"), "--style", "FE-052", "--theme", "很小的难过"], capture_output=True, text=True, encoding="utf-8", check=True)
+    style_267 = subprocess.run(python + [str(SKILL / "scripts" / "prompt_style.py"), "--style", "FE-060", "--theme", "很小的难过"], capture_output=True, text=True, encoding="utf-8", check=True)
     if "核心风格特征：白底中国式极简手绘漫画" not in style_267.stdout or "Core style traits: 白底中国式极简手绘漫画" not in style_267.stdout:
-        fail("style FE-052 prompt must include its positive core traits")
+        fail("style FE-060 prompt must include its positive core traits")
     if "参考图：请上传本地参考图" in style_267.stdout or "Reference image: upload local reference image" in style_267.stdout:
-        fail("style FE-052 must not require a reference image when traits activation is strong")
+        fail("style FE-060 must not require a reference image when traits activation is strong")
     style_217 = subprocess.run(python + [str(SKILL / "scripts" / "prompt_style.py"), "--style", "FF-001", "--theme", "动画人物"], capture_output=True, text=True, encoding="utf-8", check=True)
     if ("核心风格特征：奇想风格化3D卡通美学" not in style_217.stdout
             or "参考图：请上传本地参考图" not in style_217.stdout

@@ -333,7 +333,7 @@
           "name_activation": "none",
           "traits_activation": "none"
         },
-        "FH-047": {
+        "FH-039": {
           "name_activation": "none",
           "traits_activation": "none"
         },
@@ -341,7 +341,7 @@
           "name_activation": "none",
           "traits_activation": "none"
         },
-        "FE-048": {
+        "FE-056": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
@@ -349,7 +349,7 @@
           "name_activation": "none",
           "traits_activation": "none"
         },
-        "FE-049": {
+        "FE-057": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
@@ -357,7 +357,7 @@
           "name_activation": "none",
           "traits_activation": "none"
         },
-        "FH-048": {
+        "FH-040": {
           "name_activation": "none",
           "traits_activation": "none"
         },
@@ -401,15 +401,15 @@
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FH-049": {
+        "FH-041": {
           "name_activation": "none",
           "traits_activation": "none"
         },
-        "FE-050": {
+        "FE-058": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FE-051": {
+        "FE-059": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
@@ -417,7 +417,7 @@
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FH-050": {
+        "FH-042": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
@@ -449,23 +449,23 @@
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FE-052": {
+        "FE-060": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FE-053": {
+        "FE-061": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FH-051": {
+        "FE-062": {
           "name_activation": "strong",
           "traits_activation": "none"
         },
-        "FE-054": {
+        "FE-063": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FE-055": {
+        "FE-064": {
           "name_activation": "strong",
           "traits_activation": "none"
         },
@@ -481,7 +481,7 @@
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FH-052": {
+        "FH-043": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
@@ -489,7 +489,7 @@
           "name_activation": "weak",
           "traits_activation": "strong"
         },
-        "FE-056": {
+        "FE-065": {
           "name_activation": "weak",
           "traits_activation": "strong"
         },
