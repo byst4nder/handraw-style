@@ -42,32 +42,15 @@ def create_4grid_image(image_paths: list[Path], output_path: Path) -> None:
     canvas.save(output_path, format="WEBP", quality=90, method=6)
 
 
-def create_numbered_tile(source_path: Path, number: str, output_path: Path, badge_label: str | None) -> None:
-    """Write a 512px gallery tile with an optional top-left badge."""
+def create_numbered_tile(source_path: Path, number: str, output_path: Path, badge_label: str | None = None) -> None:
+    """Write a clean 512px gallery tile without any number badge overlay."""
     with Image.open(source_path) as source:
         image = ImageOps.fit(source.convert("RGB"), (512, 512), Image.Resampling.LANCZOS, centering=(0.5, 0.5))
-    if badge_label:
-        draw = ImageDraw.Draw(image)
-        font = None
-        for font_name in ("arialbd.ttf", "Arial Bold.ttf", "DejaVuSans-Bold.ttf", "arial.ttf"):
-            try:
-                font = ImageFont.truetype(font_name, 24)
-                break
-            except Exception:
-                continue
-        if font is None:
-            font = ImageFont.load_default()
-        bbox = font.getbbox(badge_label)
-        width, height = bbox[2] - bbox[0], bbox[3] - bbox[1]
-        x, y = 14, 14
-        draw.rounded_rectangle((x - 8, y - 4, x + width + 8, y + height + 8), radius=6,
-                               fill=(255, 255, 255), outline=(200, 195, 185), width=1)
-        draw.text((x, y - bbox[1]), badge_label, font=font, fill=(20, 20, 20))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     image.save(output_path, format="WEBP", quality=90, method=6)
 
 
-def create_style_assets(number: str, source_images: list[Path], badge_label: str | None) -> dict[str, Path | None]:
+def create_style_assets(number: str, source_images: list[Path], badge_label: str | None = None) -> dict[str, Path | None]:
     """Create per-style assets and append the resulting tile to the active sheet."""
     if not source_images:
         raise ValueError("At least one source image is required.")

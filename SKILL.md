@@ -32,6 +32,16 @@ When the user asks to design an article cover, generate cover prompts, create a 
 When the user asks to blend, merge, or fuse two styles, generate a cross-media fusion prompt, or create a "character visual language × scene visual language" artwork (例如“【风格融合设计】”、“风格融合设计”、“风格融合”、“融合两种风格”、“角色与场景风格融合”、“双风格融合”、“跨媒介风格融合”), read and invoke
 [style-fusion-prompter](skills/style-fusion-prompter/SKILL.md) before handling the request. It supports fusing two hand-drawn style numbers (#001–#280), or a style number with a realistic style, optionally injects layouts (SC-*/IG-*) and theme colors (C-01–C-36), and applies the strict dual visual language coexistence template.
 
+When the user asks to design an IP character, build a Character Bible or IP Design Manual, generate standard IP cards (例如“IP形象设计”、“角色设计手册”、“设计三视图与周边”、“IP-01至IP-18卡片”), read and invoke
+[ip-designer](skills/ip-designer/SKILL.md) before handling the request. It supports 5 layers (Strategy, Character, Visual, System, Commercial) across 18 standard cards (6-card basic, 10-card standard, or 18-card full edition).
+
+When the user asks to manage, add, query, replace, or delete assets in the custom library (例如“添加到角色库”、“保存到道具库/场景库”、“替换角色基准图”、“修改资产名称/标签”、“初始化/挂载图库目录”、“查看图库清单”), read and invoke
+[custom-asset-manager](skills/custom-asset-manager/SKILL.md) before handling the request. It manages the full lifecycle of custom character (CH-*), prop (PR-*), and scene (SCN-*) assets with zero Git conflicts.
+
+When the user asks to plan, script, or direct a knowledge or tutorial AI video, generate A/B-roll visual shot lists, or structure video production (例如“做教学视频”、“视频分镜表”、“知识类视频剪辑”、“A/B-roll编排”、“视频导演”), read and invoke
+[knowledge-video-director](skills/knowledge-video-director/SKILL.md) before handling the request. It orchestrates voiceover scripts, acoustic alignment, and 7-column visual shot lists alternating between white-background IP theater (A-roll) and dark-background motion graphics/demos (B-roll).
+
+
 ## Default mode
 
 Default to creating prompts only. Do not call an image-generation tool unless the user explicitly asks to generate, render, or preview an image.
