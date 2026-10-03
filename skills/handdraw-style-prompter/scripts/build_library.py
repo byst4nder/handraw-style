@@ -28,7 +28,7 @@ GROUPS = (
     ("FD", "日本当代", "Japanese Contemporary"),
     ("FE", "新国风非遗", "Chinese Traditional"),
     ("FF", "3D黏土纸雕", "3D Clay & Paper"),
-    ("FG", "动漫赛璐璐", "Anime & Cel"),
+    ("FG", "动漫和赛璐璐", "Anime & Cel"),
     ("FH", "先锋综合", "Mixed Media"),
 )
 
@@ -39,7 +39,7 @@ GROUP_LABELS = {
     "FD": ("日本当代插画", "Japanese Contemporary & Manga"),
     "FE": ("新国风与传统工艺", "Chinese Traditional & Folk Craft"),
     "FF": ("3D黏土毛毡与纸雕", "3D Clay, Felt & Papercraft"),
-    "FG": ("复古动漫与赛璐璐", "Anime, Cel Animation & Retro Game"),
+    "FG": ("动漫和赛璐璐", "Anime, Cel Animation & Retro Game"),
     "FH": ("先锋实验与综合媒介", "Mixed Media & Impasto Arts"),
 }
 
@@ -610,8 +610,8 @@ checkRepositoryUpdate();
 
 def main() -> None:
     styles = parse_styles()
-    if len(styles) != 280:
-        raise SystemExit(f"Expected exactly 280 styles, parsed {len(styles)}")
+    if len(styles) != 286:
+        raise SystemExit(f"Expected exactly 286 styles, parsed {len(styles)}")
     cat_counts: dict[str, int] = {}
     for item in styles:
         m = re.match(r"^([A-Za-z]{2})-(\d{3})$", item["number"])

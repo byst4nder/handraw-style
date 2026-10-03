@@ -504,6 +504,30 @@
         "FB-034": {
           "name_activation": "weak",
           "traits_activation": "strong"
+        },
+        "FG-011": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FG-012": {
+          "name_activation": "strong",
+          "traits_activation": "none"
+        },
+        "FG-013": {
+          "name_activation": "strong",
+          "traits_activation": "none"
+        },
+        "FG-014": {
+          "name_activation": "strong",
+          "traits_activation": "none"
+        },
+        "FG-015": {
+          "name_activation": "strong",
+          "traits_activation": "none"
+        },
+        "FG-016": {
+          "name_activation": "strong",
+          "traits_activation": "none"
         }
       }
     }

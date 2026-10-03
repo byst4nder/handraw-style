@@ -37,12 +37,12 @@ def main() -> None:
     alias_data = json.loads(alias_file.read_text(encoding="utf-8"))
     legacy_to_new = alias_data.get("legacy_to_new", {})
     new_to_legacy = alias_data.get("new_to_legacy", {})
-    if len(legacy_to_new) != 280 or len(new_to_legacy) != 280:
-        fail("style_alias_map.json must contain 280 bidirectional mappings")
+    if len(legacy_to_new) != 286 or len(new_to_legacy) != 286:
+        fail("style_alias_map.json must contain 286 bidirectional mappings")
 
     total_styles = len(styles)
-    if total_styles != 280:
-        fail(f"expected 280 styles, got {total_styles}")
+    if total_styles != 286:
+        fail(f"expected 286 styles, got {total_styles}")
 
     CATEGORIES = ["FA", "FB", "FC", "FD", "FE", "FF", "FG", "FH"]
     cat_counts = {}
@@ -146,7 +146,7 @@ def main() -> None:
     individual = ROOT / "images" / "individual"
     expected_individual = [single_path(s["number"]) for s in styles]
     if not all(path.exists() for path in expected_individual):
-        fail("category asset folders must cover all 280 single webp images")
+        fail(f"category asset folders must cover all {total_styles} single webp images")
     if list(individual.glob("[0-9][0-9][0-9].webp")) or list(individual.glob("[0-9][0-9][0-9]_grid.webp")):
         fail("flat individual assets must be migrated into categorized folders")
     tweet_sheets = []

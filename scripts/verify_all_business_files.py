@@ -12,7 +12,7 @@ def audit_all():
     files = sorted([f for f in os.listdir(BUSINESS_DIR) if f.endswith(".md")])
     print(f"Found {len(files)} markdown files.")
 
-    expected_count = 280
+    expected_count = 286
     if len(files) != expected_count:
         print(f"ERROR: Expected {expected_count} files, found {len(files)}")
 
@@ -69,7 +69,7 @@ def audit_all():
         if size < 2500:
             errors.append(f"[{filename}] File size too small ({size} bytes)")
 
-    print(f"Total Bytes across 280 files: {total_bytes:,} bytes ({total_bytes/1024/1024:.2f} MB)")
+    print(f"Total Bytes across {expected_count} files: {total_bytes:,} bytes ({total_bytes/1024/1024:.2f} MB)")
     print(f"Total Characters: {total_words:,} chars")
     print(f"Average File Size: {total_bytes/expected_count:.0f} bytes ({total_words/expected_count:.0f} chars)")
 
@@ -81,7 +81,7 @@ def audit_all():
             print(f" ... and {len(errors) - 20} more errors.")
         return False
     else:
-        print("\nALL 280 BUSINESS FILES PASSED THE QUALITY & STRUCTURE AUDIT PERFECTLY! (100% SUCCESS)")
+        print(f"\nALL {expected_count} BUSINESS FILES PASSED THE QUALITY & STRUCTURE AUDIT PERFECTLY! (100% SUCCESS)")
         return True
 
 if __name__ == "__main__":

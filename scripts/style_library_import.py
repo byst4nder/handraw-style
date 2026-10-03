@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 from contact_sheet_registry import append_style
-from style_asset_paths import ROOT, asset_dir, bucket_name, grid_path, single_path
+from style_asset_paths import ALIAS_MAP_FILE, ROOT, asset_dir, bucket_name, grid_path, single_path
 
 
 SKILL_DIR = ROOT / "skills" / "handdraw-style-prompter"
@@ -24,6 +24,14 @@ ACTIVATIONS = {"strong", "weak", "none", "unknown"}
 
 def get_next_style_number() -> str:
     """Return the next contiguous three-digit library number."""
+    if ALIAS_MAP_FILE.exists():
+        try:
+            alias_data = json.loads(ALIAS_MAP_FILE.read_text(encoding="utf-8"))
+            legacy_nums = [int(k) for k in alias_data.get("legacy_to_new", {}).keys() if k.isdigit()]
+            if legacy_nums:
+                return f"{max(legacy_nums) + 1:03}"
+        except Exception:
+            pass
     rows = re.findall(r"^\|\s*(\d{3})\s*·", SOURCE_MD.read_text(encoding="utf-8"), re.MULTILINE)
     return f"{max((int(row) for row in rows), default=0) + 1:03}"
 

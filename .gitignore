@@ -23,6 +23,7 @@ Desktop.ini
 # Local workspace agent configuration
 .agents/
 .workbuddy/
+.obsidian/
 download.txt
 
 # Custom library local directory configuration & cache

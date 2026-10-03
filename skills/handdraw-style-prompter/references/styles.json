@@ -1590,72 +1590,114 @@
   },
   {
     "number": "FG-001",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "OscarAI",
     "generation_name": "Late-80s Cyberpunk Dark OVA Cel Anime",
     "traits": "80年代末日本黑暗赛博朋克OVA赛璐珞动画风、锐利手绘勾线、浓郁阴郁的丙烯手绘背景、高对比度硬光影、冷艳魅惑的女性肖像与黄金时代动画胶片质感。"
   },
   {
     "number": "FG-002",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "OscarAI",
     "generation_name": "Classic 60s-70s Xerox Cel Animation",
     "traits": "60-70年代经典静电复印(Xerox)手绘赛璐珞动画风、生动微糙的石墨铅笔动态勾线、古典手绘水粉城堡背景、优雅灵动的迪士尼黄金时代复古人物造型。"
   },
   {
     "number": "FG-003",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "OscarAI",
     "generation_name": "Classic 80s-90s Heroic Fantasy Cel Anime",
     "traits": "80-90年代经典剑与魔法奇幻赛璐珞动画风、纯正手绘赛璐珞质感、红发持剑女勇士与古堡阴影下的重甲战士、古典戏剧性冷暖打光。"
   },
   {
     "number": "FG-004",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "OscarAI",
     "generation_name": "Vintage 70s European Comic Animation Cel",
     "traits": "70年代欧洲传统手绘手作动画风、质朴粗糙的手绘石墙背景、夸张滑稽的红发大胡子卫兵与尖帽侍从、古典讽刺动画与阿斯特里克斯式的幽默神态。"
   },
   {
     "number": "FG-005",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "OscarAI",
     "generation_name": "Modern Cinematic 2D Character Animation",
     "traits": "现代电影级2D动画角色插画风、灵动深邃的大眼睛与微卷盘发墨镜、细腻柔和的室内环境光影与利落干净的动画清线造型。"
   },
   {
     "number": "FG-006",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "Shinyi",
     "generation_name": "Stylized Cinematic Action-Comedy Character",
     "traits": "风格化大块面剪影动画插画风、夸张强壮的胡子大叔与市井风情、干练几何块面平涂与微颗粒光影、充满动势与幽默张力的街头角色原画。"
   },
   {
     "number": "FG-007",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "South Park",
     "generation_name": "South Park Animation Style",
     "traits": "扁平几何色块、粗黑轮廓线、简化圆润人物形体、夸张圆眼与极简五官、鲜明高饱和蓝色与海洋色调、电视动画式平涂质感。"
   },
   {
     "number": "FG-008",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "Patapon Remastered",
     "generation_name": "Patapon Remastered",
     "traits": ""
   },
   {
     "number": "FG-009",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "Don’t Starve",
     "generation_name": "Don't Starve Animation Style",
     "traits": ""
   },
   {
     "number": "FG-010",
-    "group": "FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
     "reference": "Cartoon Saloon",
     "generation_name": "Cartoon Saloon Animation Style",
+    "traits": ""
+  },
+  {
+    "number": "FG-011",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "黑白恐怖漫画",
+    "generation_name": "Black and White Horror Manga Style",
+    "traits": "精密排线、高对比实黑、留白式悬念"
+  },
+  {
+    "number": "FG-012",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "久保带人《BLEACH》",
+    "generation_name": "Tite Kubo Bleach Manga Style",
+    "traits": ""
+  },
+  {
+    "number": "FG-013",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "藤本树《电锯人》",
+    "generation_name": "Tatsuki Fujimoto Chainsaw Man Manga Style",
+    "traits": ""
+  },
+  {
+    "number": "FG-014",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "芥见下下《咒术回战》",
+    "generation_name": "Gege Akutami Jujutsu Kaisen Manga Style",
+    "traits": ""
+  },
+  {
+    "number": "FG-015",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "岸本齐史《火影忍者》",
+    "generation_name": "Masashi Kishimoto Naruto Manga Style",
+    "traits": ""
+  },
+  {
+    "number": "FG-016",
+    "group": "FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game",
+    "reference": "尾田荣一郎《海贼王》",
+    "generation_name": "Eiichiro Oda One Piece Manga Style",
     "traits": ""
   },
   {

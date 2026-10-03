@@ -1437,7 +1437,7 @@ function renderStyleFilters() {{
     {{ id: 'FD', zh: 'FD 日本当代', en: 'FD Japanese' }},
     {{ id: 'FE', zh: 'FE 新国风非遗', en: 'FE Traditional' }},
     {{ id: 'FF', zh: 'FF 3D黏土纸雕', en: 'FF 3D & Paper' }},
-    {{ id: 'FG', zh: 'FG 动漫赛璐璐', en: 'FG Anime & Cel' }},
+    {{ id: 'FG', zh: 'FG 动漫和赛璐璐', en: 'FG Anime & Cel' }},
     {{ id: 'FH', zh: 'FH 先锋综合', en: 'FH Mixed Media' }}
   ];
   pickerFilters.innerHTML = groups.map(g => {{

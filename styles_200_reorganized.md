@@ -1,4 +1,4 @@
-# 280 种人物 IP 手绘风格库（全新品类独立编号版）
+# 286 种人物 IP 手绘风格库（全新品类独立编号版）
 
 规则：采用 FA~FH 8 大品类独立编号（FA-001 ~ FH-043）；保留原参考名称用于索引；生图时优先使用“生图名称”。通用/历史风格保持短描述；当代个人创作者型条目使用稍详细的视觉描述，以减少只靠作者名造成的生成不稳定。
 
@@ -480,7 +480,7 @@
 
 | FF-017 · VOX 折纸3D立体拼贴动画 | Vox 3D Origami Collage Animation | vox 折纸3d立体拼贴动画+微缩摄影，场景有景深 |
 
-## FG 复古动漫与赛璐璐 / Anime, Cel Animation & Retro Game
+## FG 动漫和赛璐璐 / Anime, Cel Animation & Retro Game
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |
 |---|---|---|
@@ -503,6 +503,18 @@
 | FG-009 · Don’t Starve | Don't Starve Animation Style |  |
 
 | FG-010 · Cartoon Saloon | Cartoon Saloon Animation Style |  |
+
+| FG-011 · 黑白恐怖漫画 | Black and White Horror Manga Style | 精密排线、高对比实黑、留白式悬念 |
+
+| FG-012 · 久保带人《BLEACH》 | Tite Kubo Bleach Manga Style | |
+
+| FG-013 · 藤本树《电锯人》 | Tatsuki Fujimoto Chainsaw Man Manga Style | |
+
+| FG-014 · 芥见下下《咒术回战》 | Gege Akutami Jujutsu Kaisen Manga Style | |
+
+| FG-015 · 岸本齐史《火影忍者》 | Masashi Kishimoto Naruto Manga Style | |
+
+| FG-016 · 尾田荣一郎《海贼王》 | Eiichiro Oda One Piece Manga Style | |
 
 ## FH 先锋实验与综合媒介 / Mixed Media & Impasto Arts
 
