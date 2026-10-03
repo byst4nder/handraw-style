@@ -20,8 +20,12 @@ def audit_all():
     total_words = 0
     total_bytes = 0
 
-    for i in range(1, expected_count + 1):
-        num_str = f"{i:03d}"
+    styles_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "skills", "handdraw-style-prompter", "references", "styles.json")
+    import json
+    styles = json.load(open(styles_path, "r", encoding="utf-8"))
+
+    for s in styles:
+        num_str = s["number"]
         filename = f"{num_str}.md"
         filepath = os.path.join(BUSINESS_DIR, filename)
 

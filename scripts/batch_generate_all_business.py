@@ -94,10 +94,10 @@ SYSTEM_PROMPT = f"""你是一位顶级商业插画艺术总监、品牌策略顾
 ## 五、 推荐图型与配色搭配
 
 - **推荐搭配图型**：
-  - [`SC-XXX`（{{图型中文名}}）](file:///e:/handraw-style/LAYOUTS.md#social-cards)
-  - [`IG-XXX`（{{图型中文名}}）](file:///e:/handraw-style/LAYOUTS.md#infographics)
-  - [`SB-XXX`（{{图型中文名}}）](file:///e:/handraw-style/LAYOUTS.md#comic-storyboards)
-  - [`IP-XXX`（{{图型中文名}}）](file:///e:/handraw-style/LAYOUTS.md#ip-characters)
+  - [`SC-XXX`（{{图型中文名}}）](../LAYOUTS.md#social-cards)
+  - [`IG-XXX`（{{图型中文名}}）](../LAYOUTS.md#infographics)
+  - [`SB-XXX`（{{图型中文名}}）](../LAYOUTS.md#comic-storyboards)
+  - [`IP-XXX`（{{图型中文名}}）](../LAYOUTS.md#ip-characters)
   （必须精选 4-5 个适配本风格的图型编号，编号取自本库 SC-001~SC-022, IG-001~IG-035, SB-001~SB-068, IP-001~IP-017）
 - **推荐主题色**：
   （必须严格从以下本库 36 色中挑选 3-4 种最契合的色彩编号与名称）：
