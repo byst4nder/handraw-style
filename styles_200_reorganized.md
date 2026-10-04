@@ -176,6 +176,18 @@
 
 | FB-043 · Manuel Marsol | Manuel Marsol Bold Acrylic Cinematic Storybook | 参考绘本作者Manuel Marsol |
 
+| FB-044 · Suzy Lee | Suzy Lee Expressive Border Charcoal & Watercolor Storybook | 参考绘本作者Suzy Lee |
+
+| FB-045 · Komako Sakai | Komako Sakai Textured Acrylic & Charcoal Storybook | 参考绘本作者Komako Sakai |
+
+| FB-046 · Sydney Smith | Sydney Smith Luminous Atmospheric Watercolor Storybook | 参考绘本作者Sydney Smith |
+
+| FB-047 · Isabelle Arsenault | Isabelle Arsenault Poetic Pencil & Gouache Storybook | 参考绘本作者Isabelle Arsenault |
+
+| FB-048 · Júlia Sardà | Júlia Sardà Ornate Gothic Whimsical Storybook | 参考绘本作者Júlia Sardà |
+
+| FB-049 · Sophie Blackall | Sophie Blackall Vintage Chinese Ink & Watercolor Storybook | 参考绘本作者Sophie Blackall |
+
 ## FC 现代平面艺术 / Modern Graphic & Pop
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |

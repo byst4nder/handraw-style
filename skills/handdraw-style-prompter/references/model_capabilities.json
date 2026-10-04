@@ -580,6 +580,30 @@
         "FB-043": {
           "name_activation": "weak",
           "traits_activation": "strong"
+        },
+        "FB-044": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-045": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-046": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-047": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-048": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-049": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
         }
       }
     }
