@@ -243,9 +243,9 @@ main{{max-width:1240px;margin:auto;padding:24px 30px 50px}}
 /* Mood Selector */
 .mood-form-group{{display:flex;flex-direction:column;gap:8px}}
 .mood-presets-row{{display:flex;flex-wrap:wrap;gap:7px;align-items:center}}
-.mood-preset-btn{{border:1px solid #dcd5ca;background:#faf8f5;color:#4a423a;padding:4px 11px;border-radius:16px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;line-height:1.3;transition:all .15s}}
-.mood-preset-btn:hover{{border-color:#b74227;color:#b74227;background:#fff8f5}}
-.mood-preset-btn.is-active{{background:#b74227;color:#fff;border-color:#b74227;box-shadow:0 1px 3px rgba(183,66,39,0.25)}}
+.mood-preset-btn,.shoot-type-preset-btn{{border:1px solid #dcd5ca;background:#faf8f5;color:#4a423a;padding:4px 11px;border-radius:16px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;line-height:1.3;transition:all .15s}}
+.mood-preset-btn:hover,.shoot-type-preset-btn:hover{{border-color:#b74227;color:#b74227;background:#fff8f5}}
+.mood-preset-btn.is-active,.shoot-type-preset-btn.is-active{{background:#b74227;color:#fff;border-color:#b74227;box-shadow:0 1px 3px rgba(183,66,39,0.25)}}
 
 /* Slots Grid */
 .fusion-checkbox-wrap{{display:inline-flex;align-items:center;gap:6px;margin-left:12px;padding:3px 10px;border-radius:16px;background:#eee8df;border:1px solid #dcd5ca;cursor:pointer;font-size:12.5px;font-weight:750;color:#514a43;user-select:none;transition:all .15s}}
@@ -464,9 +464,26 @@ dialog::backdrop{{background:#000a}}
 
           <!-- Extra fields for photo mode only -->
           <div class="extra-fields-grid single-col" id="photo-extra-fields" hidden>
-            <div class="form-group">
-              <label for="input-shoot-type" class="form-label" data-i18n="shootTypeLabel">拍摄类型：</label>
-              <input type="text" id="input-shoot-type" class="text-input" placeholder="例如：情侣 / 婚纱 / 个人写真 / 亲子全家福 / 古风汉服 / Cosplay...">
+            <div class="form-group mood-form-group">
+              <div class="selector-options-row">
+                <label for="input-shoot-type" class="form-label" data-i18n="shootTypeLabel">拍摄类型：</label>
+                <div class="mood-presets-row" role="group" aria-label="拍摄类型快捷预设">
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="情侣" data-type-en="Couple" data-i18n="shootTypeCouple">情侣</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="婚纱" data-type-en="Wedding" data-i18n="shootTypeWedding">婚纱</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="个人写真" data-type-en="Solo Portrait" data-i18n="shootTypeSolo">个人写真</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="亲子全家福" data-type-en="Family" data-i18n="shootTypeFamily">亲子全家福</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="古风汉服" data-type-en="Ancient Hanfu" data-i18n="shootTypeHanfu">古风汉服</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="新中式" data-type-en="New Chinese" data-i18n="shootTypeNewChinese">新中式</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="复古港风" data-type-en="Vintage HK" data-i18n="shootTypeVintageHK">复古港风</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="Cosplay" data-type-en="Cosplay" data-i18n="shootTypeCosplay">Cosplay</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="旅行抓拍" data-type-en="Travel Snapshot" data-i18n="shootTypeTravel">旅行抓拍</button>
+                  <button type="button" class="shoot-type-preset-btn" data-type-zh="职场肖像" data-type-en="Professional Portrait" data-i18n="shootTypeCareer">职场肖像</button>
+                </div>
+              </div>
+              <div class="ratio-input-wrap" style="max-width:100%">
+                <input type="text" id="input-shoot-type" class="text-input ratio-input" placeholder="点选上方标签，或手动输入/修改拍摄类型...">
+                <button type="button" id="btn-clear-shoot-type" class="ratio-clear-btn" title="清空拍摄类型" aria-label="清空拍摄类型" hidden>×</button>
+              </div>
             </div>
           </div>
         </div>
@@ -759,7 +776,7 @@ const COLOR_CATEGORIES = {color_categories_json_str};
 
 const wechatBtn=document.querySelector('#wechat-btn'),wechatModal=document.querySelector('#wechat-modal'),langBtn=document.querySelector('#lang-btn');
 const inputTheme=document.querySelector('#input-theme'),themeLabelText=document.querySelector('#theme-label-text'),inputAudience=document.querySelector('#input-audience'),inputChannel=document.querySelector('#input-channel'),posterExtraFields=document.querySelector('#poster-extra-fields');
-const inputShootType=document.querySelector('#input-shoot-type'),photoExtraFields=document.querySelector('#photo-extra-fields');
+const inputShootType=document.querySelector('#input-shoot-type'),photoExtraFields=document.querySelector('#photo-extra-fields'),btnClearShootType=document.querySelector('#btn-clear-shoot-type');
 const inputRatio=document.querySelector('#input-ratio'),btnClearRatio=document.querySelector('#btn-clear-ratio');
 const inputMood=document.querySelector('#input-mood'),btnClearMood=document.querySelector('#btn-clear-mood');
 const assembledText=document.querySelector('#assembled-text'),btnCopyAssembled=document.querySelector('#btn-copy-assembled'),copyBtnText=document.querySelector('#copy-btn-text');
@@ -841,7 +858,17 @@ const I18N = {{
     articleCoverPathPlaceholder: "请输入文章的本地绝对路径（例如：D:\\\\path\\\\to\\\\article.md）或直接粘贴文章内容...",
     articleCoverFixedPrompt: "先设计隐喻再出图，主标题明显，小字少或者没有小字。 其他你帮我设计。",
     photoThemePlaceholder: "输入拍摄主题与场景，例如：海边黄昏夕阳 / 现代京都祇园雨夜 / 90年代复古港风冰室...",
-    shootTypePlaceholder: "例如：情侣 / 婚纱 / 个人写真 / 亲子全家福 / 古风汉服 / Cosplay...",
+    shootTypePlaceholder: "点选上方标签，或手动输入/修改拍摄类型...",
+    shootTypeCouple: "情侣",
+    shootTypeWedding: "婚纱",
+    shootTypeSolo: "个人写真",
+    shootTypeFamily: "亲子全家福",
+    shootTypeHanfu: "古风汉服",
+    shootTypeNewChinese: "新中式",
+    shootTypeVintageHK: "复古港风",
+    shootTypeCosplay: "Cosplay",
+    shootTypeTravel: "旅行抓拍",
+    shootTypeCareer: "职场肖像",
     photoFixedPrompt: "专业影楼样片与Editorial杂志级人像摄影企划，真实皮肤质感与自然光影，注重人物情绪、姿势力学与场景关系，避免普通游客照与泛AI感。其他妆造与分镜由AI推荐。",
     audiencePlaceholder: "例如：年轻都市白领 / 露营爱好者 / 亲子家庭...",
     channelPlaceholder: "例如：小红书 / 微信公众号封面 / 线下门店立牌...",
@@ -981,7 +1008,17 @@ const I18N = {{
     articleCoverPathPlaceholder: "Enter absolute local file path (e.g. D:\\\\path\\\\to\\\\article.md) or paste article text...",
     articleCoverFixedPrompt: "Design a visual metaphor first, then generate the image. Ensure the main title is bold and prominent, with few or no small text. Pick the rest of the design for me.",
     photoThemePlaceholder: "Enter theme or setting, e.g. Sunset beach / Kyoto Gion in rain / 90s vintage cafe...",
-    shootTypePlaceholder: "e.g. Couple / Wedding / Solo Portrait / Family / Hanfu / Cosplay...",
+    shootTypePlaceholder: "Click tags above, or type/edit shoot type...",
+    shootTypeCouple: "Couple",
+    shootTypeWedding: "Wedding",
+    shootTypeSolo: "Solo Portrait",
+    shootTypeFamily: "Family",
+    shootTypeHanfu: "Ancient Hanfu",
+    shootTypeNewChinese: "New Chinese",
+    shootTypeVintageHK: "Vintage HK",
+    shootTypeCosplay: "Cosplay",
+    shootTypeTravel: "Travel Snapshot",
+    shootTypeCareer: "Professional Portrait",
     photoFixedPrompt: "Professional studio editorial portrait photography, authentic skin texture and natural lighting, focus on emotion, pose mechanics, and scene harmony, avoid cheap snapshot and generic AI looks. Other styling and shot list recommended by AI.",
     audiencePlaceholder: "e.g. Young urban professionals / Campers / Families...",
     channelPlaceholder: "e.g. Instagram / RED / Store poster stand...",
@@ -1725,7 +1762,7 @@ function autoResizeTheme() {{
   inputTheme.style.height = Math.max(inputTheme.scrollHeight, 58) + 'px';
 }}
 
-[inputAudience, inputChannel, inputShootType].filter(Boolean).forEach(el => {{
+[inputAudience, inputChannel].forEach(el => {{
   el.addEventListener('input', updatePrompt);
 }});
 if (inputTheme) {{
@@ -1833,6 +1870,63 @@ if (btnClearMood) {{
   }});
 }}
 
+// Shoot Type Presets and Input handlers (tag selection + manual input)
+document.querySelectorAll('.shoot-type-preset-btn').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    const tag = currentLang === 'zh' ? btn.dataset.typeZh : btn.dataset.typeEn;
+    const isZh = currentLang === 'zh';
+    const sep = isZh ? '、' : ', ';
+    const rawVal = inputShootType ? inputShootType.value.trim() : '';
+    let currentTags = rawVal ? rawVal.split(/[、,，/]+|\\s+/).map(s => s.trim()).filter(Boolean) : [];
+
+    const idx = currentTags.findIndex(t =>
+      t.toLowerCase() === tag.toLowerCase() ||
+      (btn.dataset.typeZh && t === btn.dataset.typeZh) ||
+      (btn.dataset.typeEn && t.toLowerCase() === btn.dataset.typeEn.toLowerCase())
+    );
+
+    if (idx >= 0) {{
+      currentTags.splice(idx, 1);
+      btn.classList.remove('is-active');
+    }} else {{
+      currentTags.push(tag);
+      btn.classList.add('is-active');
+    }}
+
+    if (inputShootType) {{
+      inputShootType.value = currentTags.join(sep);
+      if (btnClearShootType) btnClearShootType.hidden = currentTags.length === 0;
+    }}
+    updatePrompt();
+  }});
+}});
+
+if (inputShootType) {{
+  inputShootType.addEventListener('input', () => {{
+    const rawVal = inputShootType.value.trim();
+    if (btnClearShootType) btnClearShootType.hidden = !rawVal;
+    const tokens = rawVal ? rawVal.split(/[、,，/]+|\\s+/).map(s => s.trim().toLowerCase()).filter(Boolean) : [];
+    const tokenSet = new Set(tokens);
+    document.querySelectorAll('.shoot-type-preset-btn').forEach(b => {{
+      const isMatch = tokenSet.has(b.dataset.typeZh.toLowerCase()) || tokenSet.has(b.dataset.typeEn.toLowerCase());
+      b.classList.toggle('is-active', isMatch);
+    }});
+    updatePrompt();
+  }});
+}}
+
+if (btnClearShootType) {{
+  btnClearShootType.addEventListener('click', () => {{
+    if (inputShootType) {{
+      inputShootType.value = '';
+      inputShootType.focus();
+    }}
+    btnClearShootType.hidden = true;
+    document.querySelectorAll('.shoot-type-preset-btn').forEach(b => b.classList.remove('is-active'));
+    updatePrompt();
+  }});
+}}
+
 // Fusion Checkbox Listener
 if (checkboxFusion) {{
   checkboxFusion.addEventListener('change', () => {{
@@ -1898,6 +1992,8 @@ document.querySelector('#btn-reset').addEventListener('click', () => {{
   inputAudience.value = '';
   inputChannel.value = '';
   if (inputShootType) inputShootType.value = '';
+  if (btnClearShootType) btnClearShootType.hidden = true;
+  document.querySelectorAll('.shoot-type-preset-btn').forEach(b => b.classList.remove('is-active'));
   if (inputRatio) {{
     inputRatio.value = '';
     if (btnClearRatio) btnClearRatio.hidden = true;
