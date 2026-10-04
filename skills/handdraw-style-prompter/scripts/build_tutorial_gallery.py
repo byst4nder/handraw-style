@@ -224,6 +224,7 @@ main{{max-width:1240px;margin:auto;padding:24px 30px 50px}}
 .text-input:focus{{outline:none;border-color:#b74227;box-shadow:0 0 0 3px rgba(183,66,39,0.15)}}
 .text-area{{min-height:58px;line-height:1.5;resize:vertical;font-family:inherit;overflow-y:auto}}
 .extra-fields-grid{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+.extra-fields-grid.single-col{{grid-template-columns:1fr}}
 .extra-fields-grid[hidden]{{display:none!important}}
 
 /* Aspect Ratio Selector */
@@ -421,6 +422,7 @@ dialog::backdrop{{background:#000a}}
                 <button type="button" class="mode-btn" data-mode="poster" data-i18n="modePoster">海报</button>
                 <button type="button" class="mode-btn" data-mode="article-illust" data-i18n="modeArticleIllust">文章插图</button>
                 <button type="button" class="mode-btn" data-mode="article-cover" data-i18n="modeArticleCover">文章封面</button>
+                <button type="button" class="mode-btn" data-mode="photo" data-i18n="modePhoto">摄影</button>
               </div>
             </div>
             <div class="mode-item">
@@ -457,6 +459,14 @@ dialog::backdrop{{background:#000a}}
             <div class="form-group">
               <label for="input-channel" class="form-label" data-i18n="channelLabel">海报投放渠道：</label>
               <input type="text" id="input-channel" class="text-input" placeholder="例如：小红书 / 微信公众号封面 / 线下门店立牌...">
+            </div>
+          </div>
+
+          <!-- Extra fields for photo mode only -->
+          <div class="extra-fields-grid single-col" id="photo-extra-fields" hidden>
+            <div class="form-group">
+              <label for="input-shoot-type" class="form-label" data-i18n="shootTypeLabel">拍摄类型：</label>
+              <input type="text" id="input-shoot-type" class="text-input" placeholder="例如：情侣 / 婚纱 / 个人写真 / 亲子全家福 / 古风汉服 / Cosplay...">
             </div>
           </div>
         </div>
@@ -749,6 +759,7 @@ const COLOR_CATEGORIES = {color_categories_json_str};
 
 const wechatBtn=document.querySelector('#wechat-btn'),wechatModal=document.querySelector('#wechat-modal'),langBtn=document.querySelector('#lang-btn');
 const inputTheme=document.querySelector('#input-theme'),themeLabelText=document.querySelector('#theme-label-text'),inputAudience=document.querySelector('#input-audience'),inputChannel=document.querySelector('#input-channel'),posterExtraFields=document.querySelector('#poster-extra-fields');
+const inputShootType=document.querySelector('#input-shoot-type'),photoExtraFields=document.querySelector('#photo-extra-fields');
 const inputRatio=document.querySelector('#input-ratio'),btnClearRatio=document.querySelector('#btn-clear-ratio');
 const inputMood=document.querySelector('#input-mood'),btnClearMood=document.querySelector('#btn-clear-mood');
 const assembledText=document.querySelector('#assembled-text'),btnCopyAssembled=document.querySelector('#btn-copy-assembled'),copyBtnText=document.querySelector('#copy-btn-text');
@@ -811,6 +822,7 @@ const I18N = {{
     modePoster: "海报",
     modeArticleIllust: "文章插图",
     modeArticleCover: "文章封面",
+    modePhoto: "摄影",
     whitespaceLabel: "留白：",
     whitespaceNormal: "正常",
     whitespaceModerate: "适中",
@@ -820,12 +832,17 @@ const I18N = {{
     themeLabel: "主题：",
     articlePathLabel: "文章文件地址：",
     articleCoverPathLabel: "文章文件地址或内容：",
+    photoThemeLabel: "拍摄场景与时空：",
+    shootTypeLabel: "拍摄类型：",
     audienceLabel: "受众：",
     channelLabel: "海报投放渠道：",
     themePlaceholder: "输入画面主题，例如：秋天的第一杯奶茶 / 窗台晒太阳的猫咪...",
     articlePathPlaceholder: "请输入文章的本地绝对路径，例如：D:\\\\path\\\\to\\\\article.md...",
     articleCoverPathPlaceholder: "请输入文章的本地绝对路径（例如：D:\\\\path\\\\to\\\\article.md）或直接粘贴文章内容...",
     articleCoverFixedPrompt: "先设计隐喻再出图，主标题明显，小字少或者没有小字。 其他你帮我设计。",
+    photoThemePlaceholder: "输入拍摄主题与场景，例如：海边黄昏夕阳 / 现代京都祇园雨夜 / 90年代复古港风冰室...",
+    shootTypePlaceholder: "例如：情侣 / 婚纱 / 个人写真 / 亲子全家福 / 古风汉服 / Cosplay...",
+    photoFixedPrompt: "专业影楼样片与Editorial杂志级人像摄影企划，真实皮肤质感与自然光影，注重人物情绪、姿势力学与场景关系，避免普通游客照与泛AI感。其他妆造与分镜由AI推荐。",
     audiencePlaceholder: "例如：年轻都市白领 / 露营爱好者 / 亲子家庭...",
     channelPlaceholder: "例如：小红书 / 微信公众号封面 / 线下门店立牌...",
     ratioLabel: "画幅比例：",
@@ -945,6 +962,7 @@ const I18N = {{
     modePoster: "Poster",
     modeArticleIllust: "Article Illustration",
     modeArticleCover: "Article Cover",
+    modePhoto: "Photography",
     whitespaceLabel: "Negative Space:",
     whitespaceNormal: "Normal",
     whitespaceModerate: "Moderate",
@@ -954,12 +972,17 @@ const I18N = {{
     themeLabel: "Theme:",
     articlePathLabel: "Article File Path:",
     articleCoverPathLabel: "Article File Path or Text:",
+    photoThemeLabel: "Setting & Scene:",
+    shootTypeLabel: "Shoot Type:",
     audienceLabel: "Audience:",
     channelLabel: "Distribution Channel:",
     themePlaceholder: "Enter theme, e.g. Autumn milk tea / Cat sunbathing on windowsill...",
     articlePathPlaceholder: "Enter absolute local file path, e.g. D:\\\\path\\\\to\\\\article.md...",
     articleCoverPathPlaceholder: "Enter absolute local file path (e.g. D:\\\\path\\\\to\\\\article.md) or paste article text...",
     articleCoverFixedPrompt: "Design a visual metaphor first, then generate the image. Ensure the main title is bold and prominent, with few or no small text. Pick the rest of the design for me.",
+    photoThemePlaceholder: "Enter theme or setting, e.g. Sunset beach / Kyoto Gion in rain / 90s vintage cafe...",
+    shootTypePlaceholder: "e.g. Couple / Wedding / Solo Portrait / Family / Hanfu / Cosplay...",
+    photoFixedPrompt: "Professional studio editorial portrait photography, authentic skin texture and natural lighting, focus on emotion, pose mechanics, and scene harmony, avoid cheap snapshot and generic AI looks. Other styling and shot list recommended by AI.",
     audiencePlaceholder: "e.g. Young urban professionals / Campers / Families...",
     channelPlaceholder: "e.g. Instagram / RED / Store poster stand...",
     ratioLabel: "Aspect Ratio:",
@@ -1133,6 +1156,8 @@ function updatePrompt() {{
       parts.push(isZh ? '文章插图模式' : 'Article illustration mode');
     }} else if (currentMode === 'article-cover') {{
       parts.push(isZh ? '文章封面模式' : 'Article cover mode');
+    }} else if (currentMode === 'photo') {{
+      parts.push(isZh ? '摄影写真模式' : 'Photo portrait mode');
     }}
   }} else {{
     if (currentMode === 'poster') {{
@@ -1143,6 +1168,8 @@ function updatePrompt() {{
       parts.push(isZh ? '文章插图模式' : 'Article illustration mode');
     }} else if (currentMode === 'article-cover') {{
       parts.push(isZh ? '请设计文章封面' : 'Please design an article cover');
+    }} else if (currentMode === 'photo') {{
+      parts.push(isZh ? '请帮我做摄影写真生图' : 'Please plan a photo shoot and generate image prompt');
     }}
   }}
 
@@ -1238,7 +1265,14 @@ function updatePrompt() {{
     else if (ratioVal === '3:4') scenario = isZh ? '小红书封面' : 'Xiaohongshu Cover';
     else if (ratioVal === '2.35:1' || ratioVal === '21:9') scenario = isZh ? '公众号文章封面' : 'WeChat Official Account Cover';
     parts.push(isZh ? `业务场景：${{scenario}}` : `Scenario: ${{scenario}}`);
-    parts.push(t.articleCoverFixedPrompt);
+  }} else if (currentMode === 'photo') {{
+    const shootTypeVal = inputShootType ? inputShootType.value.trim() : '';
+    const shootTypeDisplay = shootTypeVal || (isZh ? '【由AI根据主题推断】' : '[Inferred by AI]');
+    parts.push(isZh ? `拍摄类型：${{shootTypeDisplay}}` : `Shoot type: ${{shootTypeDisplay}}`);
+
+    const themeDisplay = themeVal || (isZh ? '【输入拍摄场景或时空】' : '[Enter shoot setting or scene]');
+    parts.push(isZh ? `拍摄场景与主题：${{themeDisplay}}` : `Theme & Setting: ${{themeDisplay}}`);
+    parts.push(t.photoFixedPrompt);
   }} else {{
     const themeDisplay = themeVal || t.themeEmptyText;
     parts.push(isZh ? `主题：${{themeDisplay}}` : `Theme: ${{themeDisplay}}`);
@@ -1309,6 +1343,9 @@ function setMode(mode) {{
   }} else {{
     posterExtraFields.hidden = true;
   }}
+  if (photoExtraFields) {{
+    photoExtraFields.hidden = (mode !== 'photo');
+  }}
 
   const slotLayout = document.querySelector('#slot-layout');
   const optTag = document.querySelector('#slot-layout-optional');
@@ -1338,6 +1375,7 @@ function setMode(mode) {{
     'poster': '9:16',
     'article-illust': '4:3',
     'article-cover': '2.35:1',
+    'photo': '3:4',
   }};
   const targetRatio = defaultRatios[mode];
   if (targetRatio && inputRatio) {{
@@ -1354,10 +1392,14 @@ function setMode(mode) {{
   }} else if (mode === 'article-cover') {{
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].articleCoverPathPlaceholder;
+  }} else if (mode === 'photo') {{
+    if (themeLabelText) themeLabelText.textContent = I18N[currentLang].photoThemeLabel;
+    if (inputTheme) inputTheme.placeholder = I18N[currentLang].photoThemePlaceholder;
   }} else {{
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].themeLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].themePlaceholder;
   }}
+  if (inputShootType) inputShootType.placeholder = I18N[currentLang].shootTypePlaceholder;
   updatePrompt();
 }}
 
@@ -1683,7 +1725,7 @@ function autoResizeTheme() {{
   inputTheme.style.height = Math.max(inputTheme.scrollHeight, 58) + 'px';
 }}
 
-[inputAudience, inputChannel].forEach(el => {{
+[inputAudience, inputChannel, inputShootType].filter(Boolean).forEach(el => {{
   el.addEventListener('input', updatePrompt);
 }});
 if (inputTheme) {{
@@ -1855,6 +1897,7 @@ document.querySelector('#btn-reset').addEventListener('click', () => {{
   inputTheme.style.height = '';
   inputAudience.value = '';
   inputChannel.value = '';
+  if (inputShootType) inputShootType.value = '';
   if (inputRatio) {{
     inputRatio.value = '';
     if (btnClearRatio) btnClearRatio.hidden = true;
@@ -1941,10 +1984,14 @@ function applyLang(lang) {{
   }} else if (currentMode === 'article-cover') {{
     if (themeLabelText) themeLabelText.textContent = t.articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = t.articleCoverPathPlaceholder;
+  }} else if (currentMode === 'photo') {{
+    if (themeLabelText) themeLabelText.textContent = t.photoThemeLabel;
+    if (inputTheme) inputTheme.placeholder = t.photoThemePlaceholder;
   }} else {{
     if (themeLabelText) themeLabelText.textContent = t.themeLabel;
     if (inputTheme) inputTheme.placeholder = t.themePlaceholder;
   }}
+  if (inputShootType) inputShootType.placeholder = t.shootTypePlaceholder;
   inputAudience.placeholder = t.audiencePlaceholder;
   inputChannel.placeholder = t.channelPlaceholder;
   if (inputRatio) inputRatio.placeholder = t.ratioPlaceholder;
