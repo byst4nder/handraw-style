@@ -188,6 +188,20 @@
 
 | FB-049 · Sophie Blackall | Sophie Blackall Vintage Chinese Ink & Watercolor Storybook | 参考绘本作者Sophie Blackall |
 
+| FB-050 · Katsumi Komagata | Katsumi Komagata Minimal Geometric Cut-Paper Storybook | 参考绘本作者Katsumi Komagata |
+
+| FB-051 · Kazuo Iwamura | Kazuo Iwamura Warm Forest Animals Watercolor Storybook | 参考绘本作者Kazuo Iwamura |
+
+| FB-052 · Keiko Sena | Keiko Sena Whimsical Collage Paper-Cut Storybook | 参考绘本作者Keiko Sena |
+
+| FB-053 · Rotraut Susanne Berner | Rotraut Susanne Berner Bustling Wimmelbuch Line & Wash Storybook | 参考绘本作者Rotraut Susanne Berner |
+
+| FB-054 · Wolf Erlbruch | Wolf Erlbruch Philosophical Collage & Chalk Storybook | 参考绘本作者Wolf Erlbruch |
+
+| FB-055 · Peter Sís | Peter Sis Intricate Stippled Map & Fantasy Storybook | 参考绘本作者Peter Sis |
+
+| FB-056 · Carll Cneut | Carll Cneut Ornate Flemish Baroque Gouache Storybook | 参考绘本作者Carll Cneut |
+
 ## FC 现代平面艺术 / Modern Graphic & Pop
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |
