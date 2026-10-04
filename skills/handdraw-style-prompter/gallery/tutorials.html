@@ -1019,7 +1019,7 @@ function updatePrompt() {
     } else if (currentMode === 'article-cover') {
       parts.push(isZh ? '文章封面模式' : 'Article cover mode');
     } else if (currentMode === 'photo') {
-      parts.push(isZh ? '摄影写真模式' : 'Photo portrait mode');
+      parts.push(isZh ? '摄影写真模式，请先出3个方案供我挑选' : 'Photo portrait mode, please first propose 3 candidate directions for me to choose from');
     }
   } else {
     if (currentMode === 'poster') {
@@ -1031,7 +1031,7 @@ function updatePrompt() {
     } else if (currentMode === 'article-cover') {
       parts.push(isZh ? '请设计文章封面' : 'Please design an article cover');
     } else if (currentMode === 'photo') {
-      parts.push(isZh ? '请帮我做摄影写真生图' : 'Please plan a photo shoot and generate image prompt');
+      parts.push(isZh ? '摄影写真模式，请先出3个方案供我挑选' : 'Photo portrait mode, please first propose 3 candidate directions for me to choose from');
     }
   }
 
