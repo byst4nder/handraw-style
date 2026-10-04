@@ -205,6 +205,9 @@ main{{max-width:1240px;margin:auto;padding:24px 30px 50px}}
 .step-title{{margin:0;font-size:15px;font-weight:800;color:#24211e;display:inline-flex;align-items:center;gap:6px}}
 .step-title.output-title{{color:#b74227}}
 .step-toolbar{{display:flex;align-items:center;gap:8px;margin-left:auto}}
+.btn-step-tool{{display:inline-flex;align-items:center;gap:5px;border:1px solid #dcd5ca;background:#faf8f5;color:#514a43;font:inherit;font-size:12.5px;font-weight:750;padding:4px 10px;border-radius:6px;cursor:pointer;line-height:1.3;transition:all .15s;user-select:none}}
+.btn-step-tool:hover{{border-color:#b74227;color:#b74227;background:#fff8f5}}
+.btn-step-tool svg{{flex-shrink:0}}
 .step-body{{display:flex;flex-direction:column;gap:12px}}
 
 /* Mode & Density Controls */
@@ -442,6 +445,18 @@ dialog::backdrop{{background:#000a}}
             <span class="step-badge">2</span>
             <h2 class="step-title" data-i18n="step2Title">画面主题与内容</h2>
           </div>
+          <div class="step-toolbar">
+            <input type="file" id="theme-file-picker" style="display:none" aria-hidden="true">
+            <input type="file" id="theme-folder-picker" webkitdirectory directory style="display:none" aria-hidden="true">
+            <button type="button" class="btn-step-tool" id="btn-pick-file" title="选择本地文件并将文件名填入输入框">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              <span data-i18n="pickFileBtn">选择文件</span>
+            </button>
+            <button type="button" class="btn-step-tool" id="btn-pick-folder" title="选择本地目录并将目录名填入输入框">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              <span data-i18n="pickFolderBtn">选择目录</span>
+            </button>
+          </div>
         </div>
         <div class="step-body">
           <div class="form-group">
@@ -574,11 +589,11 @@ dialog::backdrop{{background:#000a}}
             <div class="slot-card" id="slot-layout">
               <div class="slot-header">
                 <span class="slot-title">📐 <span data-i18n="slotLayout">图型</span></span>
-                <span class="slot-optional" id="slot-layout-optional" data-i18n="optionalLayout">可选 (120)</span>
+                <span class="slot-optional" id="slot-layout-optional" data-i18n="optionalLayout">可选 ({layouts_count})</span>
               </div>
               <button type="button" class="slot-trigger" data-picker="layout">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                <span data-i18n="pickLayoutText">按图选择图型</span>
+                <span data-i18n="pickLayoutText">按图选择图型 ({layouts_count})</span>
               </button>
               <div class="slot-filled" hidden>
                 <div class="slot-img-wrap"><img src="" alt=""></div>
@@ -749,6 +764,7 @@ const COLOR_CATEGORIES = {color_categories_json_str};
 
 const wechatBtn=document.querySelector('#wechat-btn'),wechatModal=document.querySelector('#wechat-modal'),langBtn=document.querySelector('#lang-btn');
 const inputTheme=document.querySelector('#input-theme'),themeLabelText=document.querySelector('#theme-label-text'),inputAudience=document.querySelector('#input-audience'),inputChannel=document.querySelector('#input-channel'),posterExtraFields=document.querySelector('#poster-extra-fields');
+const themeFilePicker=document.querySelector('#theme-file-picker'),themeFolderPicker=document.querySelector('#theme-folder-picker'),btnPickFile=document.querySelector('#btn-pick-file'),btnPickFolder=document.querySelector('#btn-pick-folder');
 const inputRatio=document.querySelector('#input-ratio'),btnClearRatio=document.querySelector('#btn-clear-ratio');
 const inputMood=document.querySelector('#input-mood'),btnClearMood=document.querySelector('#btn-clear-mood');
 const assembledText=document.querySelector('#assembled-text'),btnCopyAssembled=document.querySelector('#btn-copy-assembled'),copyBtnText=document.querySelector('#copy-btn-text');
@@ -818,6 +834,8 @@ const I18N = {{
     whitespaceModeratePrompt: "【大量留白】",
     whitespaceHighPrompt: "【大量留白，场景只显示必要部分，不要显示全】",
     themeLabel: "主题：",
+    pickFileBtn: "选择文件",
+    pickFolderBtn: "选择目录",
     articlePathLabel: "文章文件地址：",
     articleCoverPathLabel: "文章文件地址或内容：",
     audienceLabel: "受众：",
@@ -861,14 +879,14 @@ const I18N = {{
     slotColor: "主题色",
     optional: "可选",
     optionalAsset: "可选 ({assets_count})",
-    optionalLayout: "可选 (120)",
+    optionalLayout: "可选 ({layouts_count})",
     optionalStyle: "可选 ({styles_count})",
     optionalCharStyle: "可选 (风格/写实)",
     optionalSceneStyle: "可选 (风格/写实)",
     optionalColor: "可选 (36)",
     layoutNotApplicable: "不适用",
     pickAssetText: "按图选择自建资产",
-    pickLayoutText: "按图选择图型 (120)",
+    pickLayoutText: "按图选择图型 ({layouts_count})",
     pickStyleText: "按图选择风格 ({styles_count})",
     pickCharStyleText: "按图选择角色风格",
     pickSceneStyleText: "按图选择场景风格",
@@ -883,7 +901,7 @@ const I18N = {{
     formulaLabel: "示例提示词：",
     searchPlaceholder: "输入编号或名称过滤...",
     pickerTitleAsset: "选择视觉资产（角色 / 道具 / 场景）",
-    pickerTitleLayout: "选择图型 (120)",
+    pickerTitleLayout: "选择图型 ({layouts_count})",
     pickerTitleStyle: "选择手绘风格 ({styles_count})",
     pickerTitleCharStyle: "选择角色风格",
     pickerTitleSceneStyle: "选择场景风格",
@@ -897,6 +915,7 @@ const I18N = {{
     filterInfographic: "信息图 (IG)",
     filterComicStoryboard: "漫画分镜 (SB)",
     filterIpCharacter: "IP设计 (IP)",
+    filterEcommerce: "电商 (EC)",
     filterBlue: "经典蓝系",
     filterGreen: "清新绿系",
     filterRed: "古典红绿",
@@ -951,6 +970,8 @@ const I18N = {{
     whitespaceModeratePrompt: "[Generous negative space]",
     whitespaceHighPrompt: "[Generous negative space, scene shows only essential parts, do not show in full]",
     themeLabel: "Theme:",
+    pickFileBtn: "Choose File",
+    pickFolderBtn: "Choose Folder",
     articlePathLabel: "Article File Path:",
     articleCoverPathLabel: "Article File Path or Text:",
     audienceLabel: "Audience:",
@@ -994,14 +1015,14 @@ const I18N = {{
     slotColor: "Theme Color",
     optional: "Optional",
     optionalAsset: "Optional ({assets_count})",
-    optionalLayout: "Optional (120)",
+    optionalLayout: "Optional ({layouts_count})",
     optionalStyle: "Optional ({styles_count})",
     optionalCharStyle: "Optional (Style/Realistic)",
     optionalSceneStyle: "Optional (Style/Realistic)",
     optionalColor: "Optional (36)",
     layoutNotApplicable: "N/A",
     pickAssetText: "Pick Custom Asset",
-    pickLayoutText: "Pick Layout (120)",
+    pickLayoutText: "Pick Layout ({layouts_count})",
     pickStyleText: "Pick Style ({styles_count})",
     pickCharStyleText: "Pick Character Style",
     pickSceneStyleText: "Pick Scene Style",
@@ -1016,7 +1037,7 @@ const I18N = {{
     formulaLabel: "Example Prompt:",
     searchPlaceholder: "Search ID or name...",
     pickerTitleAsset: "Select Visual Asset (Character / Prop / Scene)",
-    pickerTitleLayout: "Select Layout (120)",
+    pickerTitleLayout: "Select Layout ({layouts_count})",
     pickerTitleStyle: "Select Style ({styles_count})",
     pickerTitleCharStyle: "Select Character Style",
     pickerTitleSceneStyle: "Select Scene Style",
@@ -1030,6 +1051,7 @@ const I18N = {{
     filterInfographic: "Infographics (IG)",
     filterComicStoryboard: "Comic Storyboards (SB)",
     filterIpCharacter: "IP Design (IP)",
+    filterEcommerce: "E-commerce (EC)",
     filterBlue: "Classic Blue",
     filterGreen: "Fresh Green",
     filterRed: "Classic Red & Vintage",
@@ -1417,12 +1439,14 @@ function renderLayoutFilters() {{
   const igCount = LAYOUTS_DATA.filter(x => x.cat === 'infographic').length;
   const sbCount = LAYOUTS_DATA.filter(x => x.cat === 'comic-storyboard').length;
   const ipCount = LAYOUTS_DATA.filter(x => x.cat === 'ip-character').length;
+  const ecCount = LAYOUTS_DATA.filter(x => x.cat === 'ecommerce').length;
   pickerFilters.innerHTML = `
     <button type="button" class="modal-filter-btn is-active" data-filter="all">${{t.filterAll}} (${{LAYOUTS_DATA.length}})</button>
     <button type="button" class="modal-filter-btn" data-filter="social-card">${{t.filterSocialCard}} (${{scCount}})</button>
     <button type="button" class="modal-filter-btn" data-filter="infographic">${{t.filterInfographic}} (${{igCount}})</button>
     <button type="button" class="modal-filter-btn" data-filter="comic-storyboard">${{t.filterComicStoryboard}} (${{sbCount}})</button>
     <button type="button" class="modal-filter-btn" data-filter="ip-character">${{t.filterIpCharacter}} (${{ipCount}})</button>
+    <button type="button" class="modal-filter-btn" data-filter="ecommerce">${{t.filterEcommerce}} (${{ecCount}})</button>
   `;
   attachFilterEvents();
 }}
@@ -1686,6 +1710,55 @@ if (inputTheme) {{
   inputTheme.addEventListener('input', () => {{
     autoResizeTheme();
     updatePrompt();
+  }});
+}}
+
+// Theme file / folder picker buttons
+function appendThemeText(textToInsert) {{
+  if (!inputTheme || !textToInsert) return;
+  const currentVal = inputTheme.value.trim();
+  if (!currentVal) {{
+    inputTheme.value = textToInsert;
+  }} else {{
+    inputTheme.value = currentVal + ' ' + textToInsert;
+  }}
+  autoResizeTheme();
+  updatePrompt();
+}}
+
+if (btnPickFile && themeFilePicker) {{
+  btnPickFile.addEventListener('click', () => {{
+    themeFilePicker.value = '';
+    themeFilePicker.click();
+  }});
+  themeFilePicker.addEventListener('change', () => {{
+    if (themeFilePicker.files && themeFilePicker.files.length > 0) {{
+      const file = themeFilePicker.files[0];
+      appendThemeText(file.name);
+    }}
+  }});
+}}
+
+if (btnPickFolder && themeFolderPicker) {{
+  btnPickFolder.addEventListener('click', () => {{
+    themeFolderPicker.value = '';
+    themeFolderPicker.click();
+  }});
+  themeFolderPicker.addEventListener('change', () => {{
+    if (themeFolderPicker.files && themeFolderPicker.files.length > 0) {{
+      const firstFile = themeFolderPicker.files[0];
+      // Extract the top-level directory name from webkitRelativePath
+      let dirName = '';
+      if (firstFile.webkitRelativePath) {{
+        dirName = firstFile.webkitRelativePath.split('/')[0] || '';
+      }}
+      if (!dirName && firstFile.name) {{
+        dirName = firstFile.name;
+      }}
+      if (dirName) {{
+        appendThemeText(dirName);
+      }}
+    }}
   }});
 }}
 
