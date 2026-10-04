@@ -680,7 +680,6 @@ const I18N = {
     themeLabel: "主题：",
     articlePathLabel: "文章文件地址：",
     articleCoverPathLabel: "文章文件地址或内容：",
-    photoThemeLabel: "拍摄场景与时空：",
     shootTypeLabel: "拍摄类型：",
     audienceLabel: "受众：",
     channelLabel: "海报投放渠道：",
@@ -688,7 +687,6 @@ const I18N = {
     articlePathPlaceholder: "请输入文章的本地绝对路径，例如：D:\\path\\to\\article.md...",
     articleCoverPathPlaceholder: "请输入文章的本地绝对路径（例如：D:\\path\\to\\article.md）或直接粘贴文章内容...",
     articleCoverFixedPrompt: "先设计隐喻再出图，主标题明显，小字少或者没有小字。 其他你帮我设计。",
-    photoThemePlaceholder: "输入拍摄主题与场景，例如：海边黄昏夕阳 / 现代京都祇园雨夜 / 90年代复古港风冰室...",
     shootTypePlaceholder: "点选上方标签，或手动输入/修改拍摄类型...",
     shootTypeCouple: "情侣",
     shootTypeWedding: "婚纱",
@@ -700,7 +698,6 @@ const I18N = {
     shootTypeCosplay: "Cosplay",
     shootTypeTravel: "旅行抓拍",
     shootTypeCareer: "职场肖像",
-    photoFixedPrompt: "专业影楼样片与Editorial杂志级人像摄影企划，真实皮肤质感与自然光影，注重人物情绪、姿势力学与场景关系，避免普通游客照与泛AI感。其他妆造与分镜由AI推荐。",
     audiencePlaceholder: "例如：年轻都市白领 / 露营爱好者 / 亲子家庭...",
     channelPlaceholder: "例如：小红书 / 微信公众号封面 / 线下门店立牌...",
     ratioLabel: "画幅比例：",
@@ -830,7 +827,6 @@ const I18N = {
     themeLabel: "Theme:",
     articlePathLabel: "Article File Path:",
     articleCoverPathLabel: "Article File Path or Text:",
-    photoThemeLabel: "Setting & Scene:",
     shootTypeLabel: "Shoot Type:",
     audienceLabel: "Audience:",
     channelLabel: "Distribution Channel:",
@@ -838,7 +834,6 @@ const I18N = {
     articlePathPlaceholder: "Enter absolute local file path, e.g. D:\\path\\to\\article.md...",
     articleCoverPathPlaceholder: "Enter absolute local file path (e.g. D:\\path\\to\\article.md) or paste article text...",
     articleCoverFixedPrompt: "Design a visual metaphor first, then generate the image. Ensure the main title is bold and prominent, with few or no small text. Pick the rest of the design for me.",
-    photoThemePlaceholder: "Enter theme or setting, e.g. Sunset beach / Kyoto Gion in rain / 90s vintage cafe...",
     shootTypePlaceholder: "Click tags above, or type/edit shoot type...",
     shootTypeCouple: "Couple",
     shootTypeWedding: "Wedding",
@@ -850,7 +845,6 @@ const I18N = {
     shootTypeCosplay: "Cosplay",
     shootTypeTravel: "Travel Snapshot",
     shootTypeCareer: "Professional Portrait",
-    photoFixedPrompt: "Professional studio editorial portrait photography, authentic skin texture and natural lighting, focus on emotion, pose mechanics, and scene harmony, avoid cheap snapshot and generic AI looks. Other styling and shot list recommended by AI.",
     audiencePlaceholder: "e.g. Young urban professionals / Campers / Families...",
     channelPlaceholder: "e.g. Instagram / RED / Store poster stand...",
     ratioLabel: "Aspect Ratio:",
@@ -1133,15 +1127,13 @@ function updatePrompt() {
     else if (ratioVal === '3:4') scenario = isZh ? '小红书封面' : 'Xiaohongshu Cover';
     else if (ratioVal === '2.35:1' || ratioVal === '21:9') scenario = isZh ? '公众号文章封面' : 'WeChat Official Account Cover';
     parts.push(isZh ? `业务场景：${scenario}` : `Scenario: ${scenario}`);
-  } else if (currentMode === 'photo') {
-    const shootTypeVal = inputShootType ? inputShootType.value.trim() : '';
-    const shootTypeDisplay = shootTypeVal || (isZh ? '【由AI根据主题推断】' : '[Inferred by AI]');
-    parts.push(isZh ? `拍摄类型：${shootTypeDisplay}` : `Shoot type: ${shootTypeDisplay}`);
-
-    const themeDisplay = themeVal || (isZh ? '【输入拍摄场景或时空】' : '[Enter shoot setting or scene]');
-    parts.push(isZh ? `拍摄场景与主题：${themeDisplay}` : `Theme & Setting: ${themeDisplay}`);
-    parts.push(t.photoFixedPrompt);
   } else {
+    if (currentMode === 'photo') {
+      const shootTypeVal = inputShootType ? inputShootType.value.trim() : '';
+      if (shootTypeVal) {
+        parts.push(isZh ? `拍摄类型：${shootTypeVal}` : `Shoot type: ${shootTypeVal}`);
+      }
+    }
     const themeDisplay = themeVal || t.themeEmptyText;
     parts.push(isZh ? `主题：${themeDisplay}` : `Theme: ${themeDisplay}`);
   }
@@ -1260,9 +1252,6 @@ function setMode(mode) {
   } else if (mode === 'article-cover') {
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].articleCoverPathPlaceholder;
-  } else if (mode === 'photo') {
-    if (themeLabelText) themeLabelText.textContent = I18N[currentLang].photoThemeLabel;
-    if (inputTheme) inputTheme.placeholder = I18N[currentLang].photoThemePlaceholder;
   } else {
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].themeLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].themePlaceholder;
@@ -1911,9 +1900,6 @@ function applyLang(lang) {
   } else if (currentMode === 'article-cover') {
     if (themeLabelText) themeLabelText.textContent = t.articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = t.articleCoverPathPlaceholder;
-  } else if (currentMode === 'photo') {
-    if (themeLabelText) themeLabelText.textContent = t.photoThemeLabel;
-    if (inputTheme) inputTheme.placeholder = t.photoThemePlaceholder;
   } else {
     if (themeLabelText) themeLabelText.textContent = t.themeLabel;
     if (inputTheme) inputTheme.placeholder = t.themePlaceholder;
