@@ -684,6 +684,7 @@ const I18N = {
     audienceLabel: "受众：",
     channelLabel: "海报投放渠道：",
     themePlaceholder: "输入画面主题，例如：秋天的第一杯奶茶 / 窗台晒太阳的猫咪...",
+    themePhotoPlaceholder: "选填：输入特定主题或场景（如：海边夕阳 / 90年代港风），不填由AI推荐...",
     articlePathPlaceholder: "请输入文章的本地绝对路径，例如：D:\\path\\to\\article.md...",
     articleCoverPathPlaceholder: "请输入文章的本地绝对路径（例如：D:\\path\\to\\article.md）或直接粘贴文章内容...",
     articleCoverFixedPrompt: "先设计隐喻再出图，主标题明显，小字少或者没有小字。 其他你帮我设计。",
@@ -831,6 +832,7 @@ const I18N = {
     audienceLabel: "Audience:",
     channelLabel: "Distribution Channel:",
     themePlaceholder: "Enter theme, e.g. Autumn milk tea / Cat sunbathing on windowsill...",
+    themePhotoPlaceholder: "Optional: Enter specific theme or setting (e.g. Sunset beach / Vintage cafe), or leave empty for AI recommendation...",
     articlePathPlaceholder: "Enter absolute local file path, e.g. D:\\path\\to\\article.md...",
     articleCoverPathPlaceholder: "Enter absolute local file path (e.g. D:\\path\\to\\article.md) or paste article text...",
     articleCoverFixedPrompt: "Design a visual metaphor first, then generate the image. Ensure the main title is bold and prominent, with few or no small text. Pick the rest of the design for me.",
@@ -1127,13 +1129,15 @@ function updatePrompt() {
     else if (ratioVal === '3:4') scenario = isZh ? '小红书封面' : 'Xiaohongshu Cover';
     else if (ratioVal === '2.35:1' || ratioVal === '21:9') scenario = isZh ? '公众号文章封面' : 'WeChat Official Account Cover';
     parts.push(isZh ? `业务场景：${scenario}` : `Scenario: ${scenario}`);
-  } else {
-    if (currentMode === 'photo') {
-      const shootTypeVal = inputShootType ? inputShootType.value.trim() : '';
-      if (shootTypeVal) {
-        parts.push(isZh ? `拍摄类型：${shootTypeVal}` : `Shoot type: ${shootTypeVal}`);
-      }
+  } else if (currentMode === 'photo') {
+    const shootTypeVal = inputShootType ? inputShootType.value.trim() : '';
+    if (shootTypeVal) {
+      parts.push(isZh ? `拍摄类型：${shootTypeVal}` : `Shoot type: ${shootTypeVal}`);
     }
+    if (themeVal) {
+      parts.push(isZh ? `主题：${themeVal}` : `Theme: ${themeVal}`);
+    }
+  } else {
     const themeDisplay = themeVal || t.themeEmptyText;
     parts.push(isZh ? `主题：${themeDisplay}` : `Theme: ${themeDisplay}`);
   }
@@ -1252,6 +1256,9 @@ function setMode(mode) {
   } else if (mode === 'article-cover') {
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].articleCoverPathPlaceholder;
+  } else if (mode === 'photo') {
+    if (themeLabelText) themeLabelText.textContent = I18N[currentLang].themeLabel;
+    if (inputTheme) inputTheme.placeholder = I18N[currentLang].themePhotoPlaceholder;
   } else {
     if (themeLabelText) themeLabelText.textContent = I18N[currentLang].themeLabel;
     if (inputTheme) inputTheme.placeholder = I18N[currentLang].themePlaceholder;
@@ -1900,6 +1907,9 @@ function applyLang(lang) {
   } else if (currentMode === 'article-cover') {
     if (themeLabelText) themeLabelText.textContent = t.articleCoverPathLabel;
     if (inputTheme) inputTheme.placeholder = t.articleCoverPathPlaceholder;
+  } else if (currentMode === 'photo') {
+    if (themeLabelText) themeLabelText.textContent = t.themeLabel;
+    if (inputTheme) inputTheme.placeholder = t.themePhotoPlaceholder;
   } else {
     if (themeLabelText) themeLabelText.textContent = t.themeLabel;
     if (inputTheme) inputTheme.placeholder = t.themePlaceholder;
