@@ -610,7 +610,7 @@ checkRepositoryUpdate();
 
 def main() -> None:
     styles = parse_styles()
-    if len(styles) != 289:
+    if len(styles) != 290:
         raise SystemExit(f"Expected exactly 288 styles, parsed {len(styles)}")
     cat_counts: dict[str, int] = {}
     for item in styles:

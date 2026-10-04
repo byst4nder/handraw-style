@@ -540,6 +540,10 @@
         "FE-066": {
           "name_activation": "weak",
           "traits_activation": "strong"
+        },
+        "FE-067": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
         }
       }
     }
