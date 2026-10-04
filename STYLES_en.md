@@ -2,9 +2,9 @@
   <a href="STYLES.md">中文</a> | <strong>English</strong>
 </p>
 
-# Hand-drawn Style Visual Sheet (001–288)
+# Hand-drawn Style Visual Sheet (001–289)
 
-> Visual contact sheets for all **288 hand-drawn illustration styles** (001–288). Each sheet displays style numbers and visual references for easy browsing and selection directly on GitHub. For detailed generation names and prompt traits, see [styles_200_reorganized.md](styles_200_reorganized.md).
+> Visual contact sheets for all **289 hand-drawn illustration styles** (001–289). Each sheet displays style numbers and visual references for easy browsing and selection directly on GitHub. For detailed generation names and prompt traits, see [styles_200_reorganized.md](styles_200_reorganized.md).
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@
 - [E · Chinese Contemporary Illustration (124–154)](#group-e)
 - [F · Internet Culture, Medium & Regional (155–200)](#group-f)
 - [G · Contemporary Chinese Illustration Supplement (201–216)](#group-g)
-- [H · Other Curated Styles (217–288)](#group-h)
+- [H · Other Curated Styles (217–289)](#group-h)
 
 ---
 
@@ -87,7 +87,7 @@
 ---
 
 <a id="group-h"></a>
-## H · Other Curated Styles (217–288)
+## H · Other Curated Styles (217–289)
 
 ![H 217-232](images/H_217-232.webp)
 
@@ -97,6 +97,6 @@
 
 ![H 265-280](images/H_265-280.webp)
 
-![H 281-288](images/H_281-288.webp)
+![H 281-289](images/H_281-289.webp)
 
 ---
