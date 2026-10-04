@@ -544,6 +544,42 @@
         "FE-067": {
           "name_activation": "strong",
           "traits_activation": "none"
+        },
+        "FB-035": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-036": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-037": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-038": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-039": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-040": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-041": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-042": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-043": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
         }
       }
     }
