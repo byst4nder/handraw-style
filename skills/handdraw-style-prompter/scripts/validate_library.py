@@ -558,6 +558,7 @@ def main() -> None:
         ROOT / "skills" / "style-fusion-prompter" / "SKILL.md",
         ROOT / "skills" / "custom-asset-manager" / "SKILL.md",
         ROOT / "skills" / "ip-designer" / "SKILL.md",
+        ROOT / "skills" / "couple-photo-orchestrator" / "SKILL.md",
     ]:
         if sf.exists():
             content = sf.read_text(encoding="utf-8")
