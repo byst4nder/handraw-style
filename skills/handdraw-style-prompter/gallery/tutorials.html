@@ -35,9 +35,6 @@ main{max-width:1240px;margin:auto;padding:24px 30px 50px}
 .step-title{margin:0;font-size:15px;font-weight:800;color:#24211e;display:inline-flex;align-items:center;gap:6px}
 .step-title.output-title{color:#b74227}
 .step-toolbar{display:flex;align-items:center;gap:8px;margin-left:auto}
-.btn-step-tool{display:inline-flex;align-items:center;gap:5px;border:1px solid #dcd5ca;background:#faf8f5;color:#514a43;font:inherit;font-size:12.5px;font-weight:750;padding:4px 10px;border-radius:6px;cursor:pointer;line-height:1.3;transition:all .15s;user-select:none}
-.btn-step-tool:hover{border-color:#b74227;color:#b74227;background:#fff8f5}
-.btn-step-tool svg{flex-shrink:0}
 .step-body{display:flex;flex-direction:column;gap:12px}
 
 /* Mode & Density Controls */
@@ -274,18 +271,6 @@ dialog::backdrop{background:#000a}
           <div class="step-title-wrap">
             <span class="step-badge">2</span>
             <h2 class="step-title" data-i18n="step2Title">画面主题与内容</h2>
-          </div>
-          <div class="step-toolbar">
-            <input type="file" id="theme-file-picker" style="display:none" aria-hidden="true">
-            <input type="file" id="theme-folder-picker" webkitdirectory directory style="display:none" aria-hidden="true">
-            <button type="button" class="btn-step-tool" id="btn-pick-file" title="选择本地文件并将文件名填入输入框">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-              <span data-i18n="pickFileBtn">选择文件</span>
-            </button>
-            <button type="button" class="btn-step-tool" id="btn-pick-folder" title="选择本地目录并将目录名填入输入框">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              <span data-i18n="pickFolderBtn">选择目录</span>
-            </button>
           </div>
         </div>
         <div class="step-body">
@@ -595,7 +580,6 @@ const COLOR_CATEGORIES = [{"id":"all","zh":"全部","en":"All"},{"id":"blue","zh
 
 const wechatBtn=document.querySelector('#wechat-btn'),wechatModal=document.querySelector('#wechat-modal'),langBtn=document.querySelector('#lang-btn');
 const inputTheme=document.querySelector('#input-theme'),themeLabelText=document.querySelector('#theme-label-text'),inputAudience=document.querySelector('#input-audience'),inputChannel=document.querySelector('#input-channel'),posterExtraFields=document.querySelector('#poster-extra-fields');
-const themeFilePicker=document.querySelector('#theme-file-picker'),themeFolderPicker=document.querySelector('#theme-folder-picker'),btnPickFile=document.querySelector('#btn-pick-file'),btnPickFolder=document.querySelector('#btn-pick-folder');
 const inputRatio=document.querySelector('#input-ratio'),btnClearRatio=document.querySelector('#btn-clear-ratio');
 const inputMood=document.querySelector('#input-mood'),btnClearMood=document.querySelector('#btn-clear-mood');
 const assembledText=document.querySelector('#assembled-text'),btnCopyAssembled=document.querySelector('#btn-copy-assembled'),copyBtnText=document.querySelector('#copy-btn-text');
@@ -665,8 +649,6 @@ const I18N = {
     whitespaceModeratePrompt: "【大量留白】",
     whitespaceHighPrompt: "【大量留白，场景只显示必要部分，不要显示全】",
     themeLabel: "主题：",
-    pickFileBtn: "选择文件",
-    pickFolderBtn: "选择目录",
     articlePathLabel: "文章文件地址：",
     articleCoverPathLabel: "文章文件地址或内容：",
     audienceLabel: "受众：",
@@ -801,8 +783,6 @@ const I18N = {
     whitespaceModeratePrompt: "[Generous negative space]",
     whitespaceHighPrompt: "[Generous negative space, scene shows only essential parts, do not show in full]",
     themeLabel: "Theme:",
-    pickFileBtn: "Choose File",
-    pickFolderBtn: "Choose Folder",
     articlePathLabel: "Article File Path:",
     articleCoverPathLabel: "Article File Path or Text:",
     audienceLabel: "Audience:",
@@ -1541,55 +1521,6 @@ if (inputTheme) {
   inputTheme.addEventListener('input', () => {
     autoResizeTheme();
     updatePrompt();
-  });
-}
-
-// Theme file / folder picker buttons
-function appendThemeText(textToInsert) {
-  if (!inputTheme || !textToInsert) return;
-  const currentVal = inputTheme.value.trim();
-  if (!currentVal) {
-    inputTheme.value = textToInsert;
-  } else {
-    inputTheme.value = currentVal + ' ' + textToInsert;
-  }
-  autoResizeTheme();
-  updatePrompt();
-}
-
-if (btnPickFile && themeFilePicker) {
-  btnPickFile.addEventListener('click', () => {
-    themeFilePicker.value = '';
-    themeFilePicker.click();
-  });
-  themeFilePicker.addEventListener('change', () => {
-    if (themeFilePicker.files && themeFilePicker.files.length > 0) {
-      const file = themeFilePicker.files[0];
-      appendThemeText(file.name);
-    }
-  });
-}
-
-if (btnPickFolder && themeFolderPicker) {
-  btnPickFolder.addEventListener('click', () => {
-    themeFolderPicker.value = '';
-    themeFolderPicker.click();
-  });
-  themeFolderPicker.addEventListener('change', () => {
-    if (themeFolderPicker.files && themeFolderPicker.files.length > 0) {
-      const firstFile = themeFolderPicker.files[0];
-      // Extract the top-level directory name from webkitRelativePath
-      let dirName = '';
-      if (firstFile.webkitRelativePath) {
-        dirName = firstFile.webkitRelativePath.split('/')[0] || '';
-      }
-      if (!dirName && firstFile.name) {
-        dirName = firstFile.name;
-      }
-      if (dirName) {
-        appendThemeText(dirName);
-      }
-    }
   });
 }
 
