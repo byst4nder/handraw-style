@@ -37,12 +37,12 @@ def main() -> None:
     alias_data = json.loads(alias_file.read_text(encoding="utf-8"))
     legacy_to_new = alias_data.get("legacy_to_new", {})
     new_to_legacy = alias_data.get("new_to_legacy", {})
-    if len(legacy_to_new) != 312 or len(new_to_legacy) != 312:
-        fail("style_alias_map.json must contain 312 bidirectional mappings")
+    if len(legacy_to_new) != 321 or len(new_to_legacy) != 321:
+        fail("style_alias_map.json must contain 321 bidirectional mappings")
 
     total_styles = len(styles)
-    if total_styles != 312:
-        fail(f"expected 312 styles, got {total_styles}")
+    if total_styles != 321:
+        fail(f"expected 321 styles, got {total_styles}")
 
     CATEGORIES = ["FA", "FB", "FC", "FD", "FE", "FF", "FG", "FH"]
     cat_counts = {}

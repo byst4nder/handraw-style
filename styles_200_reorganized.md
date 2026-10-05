@@ -202,6 +202,24 @@
 
 | FB-056 · Carll Cneut | Carll Cneut Ornate Flemish Baroque Gouache Storybook | 参考绘本作者Carll Cneut |
 
+| FB-057 · Benjamin Lacombe | Benjamin Lacombe Gothic Romantic Gouache Storybook | 参考绘本作者Benjamin Lacombe |
+
+| FB-058 · Rébecca Green | Rebecca Green Cozy Gouache & Colored Pencil Storybook | 参考绘本作者Rebecca Green |
+
+| FB-059 · Marianne Dubuc | Marianne Dubuc Gentle Forest Animal Watercolor Storybook | 参考绘本作者Marianne Dubuc |
+
+| FB-060 · Marla Frazee | Marla Frazee Playful Childlike Pencil & Watercolor Storybook | 参考绘本作者Marla Frazee |
+
+| FB-061 · Catarina Sobral | Catarina Sobral Bold Geometric Midcentury Graphic Storybook | 参考绘本作者Catarina Sobral |
+
+| FB-062 · Violeta Lópiz | Violeta Lopiz Poetic Minimal Ink & Botanical Storybook | 参考绘本作者Violeta Lopiz |
+
+| FB-063 · Mariachiara Di Giorgio | Mariachiara Di Giorgio Luminous Atmospheric Water & Nature Storybook | 参考绘本作者Mariachiara Di Giorgio |
+
+| FB-064 · JiHyun Kim | JiHyun Kim Deep Ocean Sunlit Watercolor Storybook | 参考绘本作者JiHyun Kim |
+
+| FB-065 · 蔡皋 | Cai Gao Traditional Chinese Folk Warm Storybook | 参考绘本作者蔡皋 |
+
 ## FC 现代平面艺术 / Modern Graphic & Pop
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |

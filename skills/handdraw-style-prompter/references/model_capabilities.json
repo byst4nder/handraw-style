@@ -632,6 +632,42 @@
         "FB-056": {
           "name_activation": "weak",
           "traits_activation": "strong"
+        },
+        "FB-057": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-058": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-059": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-060": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-061": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-062": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-063": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-064": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
+        },
+        "FB-065": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
         }
       }
     }
