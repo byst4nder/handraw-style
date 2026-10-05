@@ -531,6 +531,19 @@ def main() -> None:
             fail(f"assets gallery is missing {token}")
     if "select-dir-btn" in assets_gallery or "add-char-btn" in assets_gallery:
         fail("assets gallery should not contain directory selection or web import form")
+    if 'src="../../../images/custom/custom_assets.js"' not in assets_gallery:
+        fail("assets.html must load isolated custom_assets.js loader")
+    if 'src="../../../images/custom/custom_assets.js"' not in tutorial_gallery:
+        fail("tutorials.html must load isolated custom_assets.js loader")
+
+    # Assert that no private local custom assets ever leak into git-tracked HTML files
+    import re
+    custom_leak_pattern = re.compile(r'\b(CH-00[2-9]|CH-0[1-9][0-9]|PR-\d{3}|SCN-\d{3})\b|images/custom/(characters|props|scenes)/')
+    for html_file in [assets_gallery_file, tutorials_gallery_file]:
+        html_text = html_file.read_text(encoding="utf-8")
+        leaks = custom_leak_pattern.findall(html_text)
+        if leaks:
+            fail(f"Local custom asset leaked into git-tracked {html_file.name}: {leaks}")
 
     characters_redirect_file = SKILL / "gallery" / "characters.html"
     if not characters_redirect_file.exists():
