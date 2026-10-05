@@ -588,6 +588,8 @@
 
 | FG-016 · 尾田荣一郎《海贼王》 | Eiichiro Oda One Piece Manga Style | |
 
+| FG-017 · 吉卜力 / Studio Ghibli | Studio Ghibli Nostalgic Hand-Drawn Cel Anime & Painterly Landscape | 参考吉卜力动画风格 |
+
 ## FH 先锋实验与综合媒介 / Mixed Media & Impasto Arts
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |
