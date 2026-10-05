@@ -668,6 +668,10 @@
         "FB-065": {
           "name_activation": "weak",
           "traits_activation": "strong"
+        },
+        "FB-066": {
+          "name_activation": "weak",
+          "traits_activation": "strong"
         }
       }
     }

@@ -220,6 +220,8 @@
 
 | FB-065 · 蔡皋 | Cai Gao Traditional Chinese Folk Warm Storybook | 参考绘本作者蔡皋 |
 
+| FB-066 · Aiko Fukawa / 布川爱子 | Aiko Fukawa Cozy Domestic Life & Floral Gouache Storybook | 参考绘本作者Aiko Fukawa |
+
 ## FC 现代平面艺术 / Modern Graphic & Pop
 
 | 编号 / 原参考名称 | 生图名称 | 核心视觉特征 |
